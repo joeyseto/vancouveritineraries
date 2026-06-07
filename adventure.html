@@ -3,8 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Adventure Base (Whistler) — Vancouver</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Whistler Day Trip — Vancouver</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -12,13 +14,18 @@
   --blush: #e8c9b8; --blush-deep: #c4896a;
   --charcoal: #2d2d2d; --warm-gray: #6b6560; --cream: #faf8f5;
   --white: #ffffff; --border: rgba(122,158,126,0.25);
+  --adventure: #4a7fa5; --adventure-light: #daeaf5; --adventure-pale: #f0f7fc;
 }
 body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--charcoal); line-height:1.6; min-height:100vh; }
+
+/* NAV */
 .back-nav { position:sticky; top:0; background:rgba(250,248,245,0.95); backdrop-filter:blur(8px); border-bottom:1px solid var(--border); z-index:100; padding:0 1.25rem; }
 .back-inner { max-width:560px; margin:0 auto; height:52px; display:flex; align-items:center; justify-content:space-between; }
 .back-btn { display:flex; align-items:center; gap:6px; font-size:13px; color:var(--warm-gray); text-decoration:none; font-weight:400; -webkit-tap-highlight-color:transparent; }
 .back-btn:active { opacity:0.6; }
 .nav-itinerary-title { font-family:'Cormorant Garamond',serif; font-size:15px; color:var(--charcoal); font-weight:400; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:200px; }
+
+/* HERO */
 .itin-hero { max-width:560px; margin:0 auto; padding:2rem 1.25rem 1.5rem; }
 .itin-hero-tag { display:inline-flex; align-items:center; gap:6px; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--sage); font-weight:500; margin-bottom:0.75rem; }
 .itin-hero-title { font-family:'Cormorant Garamond',serif; font-size:36px; font-weight:300; line-height:1.15; color:var(--charcoal); margin-bottom:0.5rem; }
@@ -26,6 +33,8 @@ body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--ch
 .itin-hero-sub { font-size:14px; color:var(--warm-gray); font-weight:300; margin-bottom:1.25rem; line-height:1.6; }
 .meta-row { display:flex; flex-wrap:wrap; gap:8px; }
 .meta-chip { display:flex; align-items:center; gap:5px; font-size:12px; font-weight:400; padding:5px 12px; border-radius:20px; background:var(--white); border:1px solid var(--border); color:var(--charcoal); }
+
+/* MAP */
 .map-section { max-width:560px; margin:0 auto; padding:0 1.25rem 2rem; }
 .map-label { font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--sage); font-weight:500; margin-bottom:10px; }
 .map-container { border-radius:16px; overflow:hidden; border:1px solid var(--border); height:260px; background:#e8ede8; }
@@ -35,33 +44,55 @@ body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--ch
 .map-stop-list { margin-top:10px; display:flex; flex-direction:column; gap:6px; }
 .map-stop { display:flex; align-items:center; gap:10px; padding:8px 12px; background:var(--white); border:1px solid var(--border); border-radius:10px; font-size:13px; }
 .map-stop-num { width:22px; height:22px; border-radius:50%; background:var(--sage); color:white; font-size:11px; font-weight:500; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.map-stop-num.adv { background:var(--adventure); }
 .map-stop-name { font-weight:400; color:var(--charcoal); flex:1; }
-.map-stop-opt { font-size:11px; color:var(--blush-deep); font-weight:500; background:#fdf1ea; padding:2px 7px; border-radius:8px; }
-.agenda-section { max-width:560px; margin:0 auto; padding:0 1.25rem 3rem; }
-.agenda-label { font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--sage); font-weight:500; margin-bottom:10px; }
-.agenda-title { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:300; color:var(--charcoal); margin-bottom:1.5rem; }
+.map-stop-opt { font-size:11px; color:var(--adventure); font-weight:500; background:var(--adventure-light); padding:2px 7px; border-radius:8px; }
+
+/* SECTION DIVIDERS */
+.section-divider { max-width:560px; margin:0 auto 1.5rem; padding:0 1.25rem; }
+.section-divider-inner { border-top:1px solid var(--border); padding-top:1.5rem; }
+.section-label { font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--sage); font-weight:500; margin-bottom:6px; }
+.section-title { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:300; color:var(--charcoal); line-height:1.2; }
+
+/* AGENDA */
+.agenda-section { max-width:560px; margin:0 auto; padding:0 1.25rem 2rem; }
 .timeline { position:relative; }
 .timeline::before { content:''; position:absolute; left:19px; top:8px; bottom:8px; width:1px; background:var(--sage-light); }
+.timeline.adv-timeline::before { background: linear-gradient(to bottom, var(--sage-light), rgba(74,127,165,0.3)); }
 .stop-block { position:relative; padding-left:50px; margin-bottom:1.5rem; }
 .stop-block:last-child { margin-bottom:0; }
 .stop-dot { position:absolute; left:10px; top:12px; width:18px; height:18px; border-radius:50%; background:var(--sage); border:3px solid var(--cream); z-index:1; display:flex; align-items:center; justify-content:center; }
 .stop-dot-num { font-size:9px; color:white; font-weight:500; line-height:1; }
-.stop-dot.optional { background:var(--blush-deep); }
+.stop-dot.adv { background:var(--adventure); }
 .stop-card { background:var(--white); border:1px solid var(--border); border-radius:14px; overflow:hidden; }
-.stop-card.optional { border-color:var(--blush); }
+.stop-card.adv { border-color:rgba(74,127,165,0.3); }
 .stop-card-top { padding:14px 16px 10px; display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
 .stop-time { font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:var(--sage); font-weight:500; margin-bottom:3px; }
-.stop-time.optional { color:var(--blush-deep); }
+.stop-time.adv { color:var(--adventure); }
 .stop-name { font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:400; color:var(--charcoal); line-height:1.2; margin-bottom:4px; }
 .stop-address { font-size:12px; color:var(--warm-gray); font-weight:300; }
 .stop-emoji { font-size:24px; flex-shrink:0; margin-top:2px; }
 .stop-desc { padding:0 16px 12px; font-size:13px; color:var(--warm-gray); font-weight:300; line-height:1.6; }
 .stop-tips { margin:0 16px 14px; padding:10px 12px; background:var(--sage-pale); border-radius:8px; border-left:3px solid var(--sage); }
+.stop-tips.adv-tips { background:var(--adventure-pale); border-left-color:var(--adventure); }
 .stop-tips-label { font-size:10px; text-transform:uppercase; letter-spacing:0.08em; color:var(--sage); font-weight:500; margin-bottom:3px; }
+.stop-tips-label.adv { color:var(--adventure); }
 .stop-tips-text { font-size:12px; color:#4a6b4e; font-weight:300; line-height:1.5; }
+.stop-tips-text.adv { color:#2d5a7a; }
 .stop-actions { border-top:1px solid var(--border); padding:10px 16px; display:flex; gap:10px; }
 .stop-action { font-size:12px; color:var(--sage); font-weight:500; text-decoration:none; display:flex; align-items:center; gap:4px; -webkit-tap-highlight-color:transparent; }
+.stop-action.adv { color:var(--adventure); }
 .stop-action:active { opacity:0.6; }
+
+/* ADVENTURE CALLOUT BANNER */
+.adventure-banner { max-width:560px; margin:0 auto; padding:0 1.25rem 1.5rem; }
+.adventure-banner-inner { background:linear-gradient(135deg, #f0f7fc 0%, var(--sage-pale) 100%); border:1px solid rgba(74,127,165,0.2); border-radius:16px; padding:18px 20px; }
+.adventure-banner-title { font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:400; color:var(--charcoal); margin-bottom:6px; }
+.adventure-banner-title em { font-style:italic; color:var(--adventure); }
+.adventure-banner-text { font-size:13px; color:var(--warm-gray); font-weight:300; line-height:1.6; }
+.adventure-badge { display:inline-flex; align-items:center; gap:5px; font-size:11px; font-weight:500; color:var(--adventure); letter-spacing:0.06em; text-transform:uppercase; margin-bottom:8px; }
+
+/* FOOTER */
 .itinerary-footer { background:var(--white); border-top:1px solid var(--border); padding:2rem 1.25rem 3rem; }
 .itinerary-footer-inner { max-width:560px; margin:0 auto; text-align:center; }
 .footer-heart { font-size:24px; margin-bottom:10px; }
@@ -78,71 +109,57 @@ body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--ch
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
       All itineraries
     </a>
-    <span class="nav-itinerary-title">Adventure Base (Whistler)</span>
+    <span class="nav-itinerary-title">Whistler Day Trip</span>
   </div>
 </nav>
 
+<!-- HERO -->
 <div class="itin-hero">
-  <div class="itin-hero-tag">🚀 Car required</div>
-  <h1 class="itin-hero-title">Adventure Base<br><em>(Whistler)</em></h1>
-  <p class="itin-hero-sub">World-class alpine adventures from the base of Whistler and Squamish — gondolas, heli-tours, rafting, and mountain biking.</p>
+  <div class="itin-hero-tag">🚗 Car required · Sea to Sky Hwy</div>
+  <h1 class="itin-hero-title">A Day in<br><em>Whistler</em></h1>
+  <p class="itin-hero-sub">The final stretch of the Sea to Sky — from Squamish north to Whistler — passes through some of BC's most dramatic scenery. A couple of unmissable pull-offs, then a world-class alpine village with as much (or as little) adventure as you want.</p>
   <div class="meta-row">
-    <span class="meta-chip">🚗 Car required</span>
-    <span class="meta-chip">📍 7 options</span>
-    <span class="meta-chip">Mix & match to your pace</span>
+    <span class="meta-chip">🚗 ~45 min from Squamish</span>
+    <span class="meta-chip">📍 Hwy 99 North</span>
+    <span class="meta-chip">Full day recommended</span>
   </div>
 </div>
 
+<!-- MAP -->
 <div class="map-section">
-  <p class="map-label">Stops at a Glance</p>
+  <p class="map-label">The Route</p>
   <div class="map-container">
     <div class="map-placeholder">
       <div class="map-placeholder-icon">🗺️</div>
-      <div class="map-placeholder-text">Paste your Google Maps embed here.<br><strong>Share → Embed a map → Copy iframe</strong></div>
+      <div class="map-placeholder-text"><iframe src="https://www.google.com/maps/d/embed?mid=1HBKigaeVyTBAgaWBv-03NLktyzM3fg0&ehbc=2E312F" width="525" height="480"></iframe></div>
     </div>
   </div>
   <div class="map-stop-list">
     <div class="map-stop">
       <div class="map-stop-num">1</div>
-      <div class="map-stop-name">Whistler Village Day Trip</div>
-      
+      <div class="map-stop-name">Brandywine Falls Provincial Park</div>
     </div>
     <div class="map-stop">
       <div class="map-stop-num">2</div>
-      <div class="map-stop-name">Whistler Gondola / Peak 2 Peak</div>
-      
+      <div class="map-stop-name">Whistler Village</div>
     </div>
     <div class="map-stop">
-      <div class="map-stop-num">3</div>
-      <div class="map-stop-name">Helicopter Tour (Squamish / Whistler)</div>
-      
-    </div>
-    <div class="map-stop">
-      <div class="map-stop-num">4</div>
-      <div class="map-stop-name">River Rafting (Squamish / Whistler)</div>
-      
-    </div>
-    <div class="map-stop">
-      <div class="map-stop-num">5</div>
-      <div class="map-stop-name">Mountain Biking (Whistler / Squamish)</div>
-      
-    </div>
-    <div class="map-stop">
-      <div class="map-stop-num">6</div>
-      <div class="map-stop-name">Optional Add-On: Squamish Mountain Biking</div>
+      <div class="map-stop-num adv">+</div>
+      <div class="map-stop-name">Optional adventures in Whistler</div>
       <span class="map-stop-opt">Optional</span>
-    </div>
-    <div class="map-stop">
-      <div class="map-stop-num">7</div>
-      <div class="map-stop-name">Lunch / Dinner: Watershed Grill</div>
-      
     </div>
   </div>
 </div>
 
+<!-- ROAD TRIP SECTION -->
+<div class="section-divider">
+  <div class="section-divider-inner">
+    <p class="section-label">The Drive</p>
+    <h2 class="section-title">Sea to Sky Highway</h2>
+  </div>
+</div>
+
 <div class="agenda-section">
-  <p class="agenda-label">Activities</p>
-  <h2 class="agenda-title">What to Expect</h2>
   <div class="timeline">
 
     <div class="stop-block">
@@ -150,127 +167,136 @@ body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--ch
       <div class="stop-card">
         <div class="stop-card-top">
           <div>
-            <div class="stop-time">6–10 hours</div>
-            <div class="stop-name">Whistler Village Day Trip</div>
+            <div class="stop-time">~20 min north of Squamish · 25-40 min</div>
+            <div class="stop-name">Brandywine Falls</div>
+            <div class="stop-address">Brandywine Falls Provincial Park, Hwy 99</div>
           </div>
-          <div class="stop-emoji">🏔️</div>
+          <div class="stop-emoji">💧</div>
         </div>
-        <div class="stop-desc">A world-class alpine resort town with pedestrian streets, boutique shops, cafés, and mountain scenery everywhere you look. It feels lively but still surrounded by nature.</div>
+        <div class="stop-desc">A 70-metre waterfall that drops straight into a basalt canyon — one of the most dramatic waterfalls in BC and genuinely worth the 10-minute walk from the lot. The viewing platform puts you right at the edge of the gorge with the falls dead ahead.</div>
         <div class="stop-tips">
           <div class="stop-tips-label">✦ Our tip</div>
-          <div class="stop-tips-text">Purebread Bakery is a must-stop for pastries and coffee.</div>
+          <div class="stop-tips-text">Easy pull-off directly off the highway. It will take about 20 minutes and most people rank it as one of the best stops on the whole drive.</div>
         </div>
         <div class="stop-actions"><a href="#" class="stop-action">📍 Directions</a></div>
       </div>
     </div>
+
     <div class="stop-block">
       <div class="stop-dot"><span class="stop-dot-num">2</span></div>
       <div class="stop-card">
         <div class="stop-card-top">
           <div>
-            <div class="stop-time">2–4 hours</div>
-            <div class="stop-name">Whistler Gondola / Peak 2 Peak</div>
+            <div class="stop-time">The main event · Flexible</div>
+            <div class="stop-name">Whistler Village</div>
+            <div class="stop-address">Whistler, BC</div>
+          </div>
+          <div class="stop-emoji">🏔️</div>
+        </div>
+        <div class="stop-desc">A world-class alpine village built at the base of two mountains. Pedestrian-only streets, great restaurants, boutique shopping, and mountain scenery from every angle. Whether you're here to explore on foot or do something bigger, this is a genuinely special place.</div>
+        <div class="stop-tips">
+          <div class="stop-tips-label">✦ Our tip</div>
+          <div class="stop-tips-text">Walk the Village Stroll and around Lost Lake Park if you just want to take it easy. It's beautiful even without any added adventure.</div>
+        </div>
+        <div class="stop-actions"><a href="#" class="stop-action">📍 Directions</a></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- OPTIONAL ADVENTURES SECTION -->
+<div class="section-divider">
+  <div class="section-divider-inner">
+    <p class="section-label">Optional</p>
+    <h2 class="section-title">Additional Activities</h2>
+  </div>
+</div>
+
+<div class="agenda-section">
+  <div class="timeline adv-timeline">
+
+    <div class="stop-block">
+      <div class="stop-dot adv"><span class="stop-dot-num">A</span></div>
+      <div class="stop-card adv">
+        <div class="stop-card-top">
+          <div>
+            <div class="stop-time adv">Optional · 1-4 hours</div>
+            <div class="stop-name">Whistler Gondola & Peak 2 Peak</div>
           </div>
           <div class="stop-emoji">🚠</div>
         </div>
-        <div class="stop-desc">A scenic lift system that takes you into alpine terrain between Whistler and Blackcomb mountains. The views stretch across glaciers, valleys, and mountain peaks.</div>
-        <div class="stop-tips">
-          <div class="stop-tips-label">✦ Our tip</div>
-          <div class="stop-tips-text">Midweek visits avoid long lift lines.</div>
+        <div class="stop-desc">Ride the gondola up from the village floor into full alpine terrain, then cross between Whistler and Blackcomb mountains on the iconic Peak 2 Peak — the longest unsupported gondola span in the world. Views stretch across glaciers, valleys, and layered peaks.</div>
+        <div class="stop-tips adv-tips">
+          <div class="stop-tips-label adv">✦ Our tip</div>
+          <div class="stop-tips-text adv">Skip on a cloudy day!</div>
         </div>
-        <div class="stop-actions"><a href="#" class="stop-action">📍 Directions</a></div>
+        <div class="stop-actions"><a href="#" class="stop-action adv">📍 Book tickets</a></div>
       </div>
     </div>
+
     <div class="stop-block">
-      <div class="stop-dot"><span class="stop-dot-num">3</span></div>
-      <div class="stop-card">
+      <div class="stop-dot adv"><span class="stop-dot-num">B</span></div>
+      <div class="stop-card adv">
         <div class="stop-card-top">
           <div>
-            <div class="stop-time">1–2 hours</div>
-            <div class="stop-name">Helicopter Tour (Squamish / Whistler)</div>
+            <div class="stop-time adv">Optional · 2–4 hours</div>
+            <div class="stop-name">Mountain Biking</div>
+            <div class="stop-address">Whistler Bike Park</div>
           </div>
-          <div class="stop-emoji">🏔️</div>
+          <div class="stop-emoji">🚵</div>
         </div>
-        <div class="stop-desc">A helicopter flight over glaciers, icefields, and rugged mountain ranges — one of the most dramatic ways to see the Coast Mountains.</div>
-        <div class="stop-tips">
-          <div class="stop-tips-label">✦ Our tip</div>
-          <div class="stop-tips-text">Morning flights usually have the clearest visibility.</div>
+        <div class="stop-desc">Whistler Bike Park is considered one of the best lift-accessed mountain bike destinations on earth, with hundreds of trails spread across both mountains. Rentals, lessons, and guided options are all available right in the village.</div>
+        <div class="stop-tips adv-tips">
+          <div class="stop-tips-label adv">✦ Our tip</div>
+          <div class="stop-tips-text adv">Start with easier flow trails — terrain escalates quickly and it catches people off guard.</div>
         </div>
-        <div class="stop-actions"><a href="#" class="stop-action">📍 Directions</a></div>
+        <div class="stop-actions"><a href="#" class="stop-action adv">📍 Directions</a></div>
       </div>
     </div>
+
+
     <div class="stop-block">
-      <div class="stop-dot"><span class="stop-dot-num">4</span></div>
-      <div class="stop-card">
+      <div class="stop-dot adv"><span class="stop-dot-num">D</span></div>
+      <div class="stop-card adv">
         <div class="stop-card-top">
           <div>
-            <div class="stop-time">2–4 hours</div>
-            <div class="stop-name">River Rafting (Squamish / Whistler)</div>
+            <div class="stop-time adv">Optional · 1–2 hours</div>
+            <div class="stop-name">Helicopter Tour</div>
+            <div class="stop-address">Whistler</div>
           </div>
-          <div class="stop-emoji">🏔️</div>
+          <div class="stop-emoji">🚁</div>
         </div>
-        <div class="stop-desc">Guided river rafting trips ranging from calm scenic floats to fast-moving rapids depending on season and river level.</div>
-        <div class="stop-tips">
-          <div class="stop-tips-label">✦ Our tip</div>
-          <div class="stop-tips-text">Spring and early summer offer the strongest water flow.</div>
+        <div class="stop-desc">A helicopter flight over glaciers, icefields, and rugged Coast Mountain ranges — one of the most dramatic ways to see the landscape you've been driving through. Tours depart directly from Whistler.</div>
+        <div class="stop-tips adv-tips">
+          <div class="stop-tips-label adv">✦ Our tip</div>
+          <div class="stop-tips-text adv">Morning flights have the clearest air and best visibility. This is the most expensive option but genuinely unlike anything else.</div>
         </div>
-        <div class="stop-actions"><a href="#" class="stop-action">📍 Directions</a></div>
+        <div class="stop-actions"><a href="#" class="stop-action adv">📍 Book a tour</a></div>
       </div>
     </div>
+
     <div class="stop-block">
-      <div class="stop-dot"><span class="stop-dot-num">5</span></div>
-      <div class="stop-card">
+      <div class="stop-dot adv"><span class="stop-dot-num">E</span></div>
+      <div class="stop-card adv">
         <div class="stop-card-top">
           <div>
-            <div class="stop-time">2–4 hours</div>
-            <div class="stop-name">Mountain Biking (Whistler / Squamish)</div>
+            <div class="stop-time adv">Optional · 1–2 hours</div>
+            <div class="stop-name">Bungee Jumping</div>
+            <div class="stop-address">Whistler Bungee</div>
           </div>
-          <div class="stop-emoji">🏔️</div>
+          <div class="stop-emoji">🪂</div>
         </div>
-        <div class="stop-desc">Both towns are globally known for mountain biking, with purpose-built bike parks and endless forest trail networks.</div>
-        <div class="stop-tips">
-          <div class="stop-tips-label">✦ Our tip</div>
-          <div class="stop-tips-text">Start with easier trails — terrain escalates quickly.</div>
+        <div class="stop-desc">One of Canada's most scenic bungee jumps off a canyon bridge over the Cheakamus River. Also offers zip lines and a suspension bridge if full bungee isn't your thing — the canyon itself is worth seeing either way.</div>
+        <div class="stop-tips adv-tips">
+          <div class="stop-tips-label adv">✦ Our tip</div>
+          <div class="stop-tips-text adv">Book ahead online — walk-up spots are limited, especially in summer. The gorge is spectacular even if you just do the suspension bridge.</div>
         </div>
-        <div class="stop-actions"><a href="#" class="stop-action">📍 Directions</a></div>
+        <div class="stop-actions"><a href="#" class="stop-action adv">📍 Directions</a></div>
       </div>
     </div>
-    <div class="stop-block">
-      <div class="stop-dot optional"><span class="stop-dot-num">6</span></div>
-      <div class="stop-card optional">
-        <div class="stop-card-top">
-          <div>
-            <div class="stop-time optional">Optional · 2–4 hours</div>
-            <div class="stop-name">Optional Add-On: Squamish Mountain Biking</div>
-          </div>
-          <div class="stop-emoji">🏔️</div>
-        </div>
-        <div class="stop-desc">Squamish is one of Canada's top mountain biking destinations, with forest trails ranging from beginner flow routes to advanced technical descents.</div>
-        <div class="stop-tips">
-          <div class="stop-tips-label">✦ Our tip</div>
-          <div class="stop-tips-text">Rent bikes in town and match trails to your skill level — don't overestimate difficulty.</div>
-        </div>
-        <div class="stop-actions"><a href="#" class="stop-action">📍 Directions</a></div>
-      </div>
-    </div>
-    <div class="stop-block">
-      <div class="stop-dot"><span class="stop-dot-num">7</span></div>
-      <div class="stop-card">
-        <div class="stop-card-top">
-          <div>
-            <div class="stop-time">1–1.5 hours</div>
-            <div class="stop-name">Lunch / Dinner: Watershed Grill</div>
-          </div>
-          <div class="stop-emoji">🍽️</div>
-        </div>
-        <div class="stop-desc">A riverside restaurant tucked into the forest along the Squamish River. Known for relaxed patio dining with a true 'Pacific Northwest lodge' feel.</div>
-        <div class="stop-tips">
-          <div class="stop-tips-label">✦ Our tip</div>
-          <div class="stop-tips-text">Ask to sit outside if the weather is good.</div>
-        </div>
-        <div class="stop-actions"><a href="#" class="stop-action">📍 Directions</a></div>
-      </div>
-    </div>
+
   </div>
 </div>
 
